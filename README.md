@@ -7,7 +7,7 @@ Utilizando SQLite, sem login e sem auth.
 
 # Como acessar as rotas?
 
-No topo do página, tem o Criar Usuário, ao clicar vai ser redirecionado para a página de criação, após criar seu úsuario(pode-se criar vários) será redirecionado para a página de atualização aonde poderá atualizar o úsuario recem criado, ao clicar em AGENDA, será redirecionado para a página principal, aonde com o contato já criado, poderá ao clicar no seu ID, entrar em uma página com as informações do usuário.
+No topo do página, tem o Criar Usuário, ao clicar vai ser redirecionado para a página de criação, após criar seu úsuario(pode-se criar vários) será redirecionado para a página de atualização aonde poderá atualizar o úsuario recem criado, ao clicar em AGENDA, será redirecionado para a página principal, aonde com o contato já criado, poderá ao clicar no seu ID, entrar em uma página com as informações do usuário e opção de ATUALIZAR e DELETAR.
 
 # Rotas Manuais:
 
