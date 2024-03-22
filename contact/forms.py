@@ -2,70 +2,62 @@ from typing import Any, Mapping
 from django.core.files.base import File
 from django.db.models.base import Model
 from django.forms.utils import ErrorList
-from contact.models import Contact, Category
+from contact.models import Contact, Category, User
 from django import forms
 from django.core.exceptions import ValidationError
+from django.contrib.auth.forms import UserCreationForm
 
 def letra_espaco(s):
     return all(caracter.isalpha() or caracter.isspace() for caracter in s)
+
+
 
 class ContactForm(forms.ModelForm):
     
     first_name = forms.CharField(
         widget=forms.TextInput(
             attrs={
-                'class': 'classe-a',
                 'placeholder': 'Digite seu nome',
             }
         ),
         label='Nome',
-        help_text='Texto para ajudar seu usuário',
     )
     last_name = forms.CharField(
         widget=forms.TextInput(
             attrs={
-                'class': 'classe-a',
                 'placeholder': 'Digite seu sobrenome',
             }
         ),
         label='Sobrenome',
-        help_text='Texto para ajudar seu usuário',
     )
     phone = forms.CharField(
         widget=forms.TextInput(
             attrs={
-                'class': 'classe-a',
                 'placeholder': 'Digite seu número',
             }
         ),
         label='Telefone',
-        help_text='Texto para ajudar seu usuário',
     )
     email = forms.EmailField(
         widget=forms.TextInput(
             attrs={
-                'class': 'classe-a',
                 'placeholder': 'Digite seu email',
             }
         ),
         label='E-mail',
-        help_text='Texto para ajudar seu usuário',
     )
     description = forms.CharField(
         widget=forms.Textarea(
             attrs={
-                'class': 'classe-a',
                 'placeholder': 'Digite sua descrição',
             }
         ),
         label='Descrição',
-        help_text='Texto para ajudar seu usuário',
         required=False
     )
     category = forms.ModelChoiceField(
         queryset=Category.objects.all(),
         label='Categoria',
-        help_text='Texto para ajudar seu usuário',
         required=False
     )
     picture = forms.ImageField(
@@ -73,7 +65,9 @@ class ContactForm(forms.ModelForm):
             attrs={
                 'accept' : 'pictures/*'
             }
-        )
+        ),
+        label='Foto',
+        required=False
     )
 
     def __init__(self, *args, **kwargs):
@@ -89,13 +83,6 @@ class ContactForm(forms.ModelForm):
     
     def clean(self):
         cleaned_data = self.cleaned_data
-        first_name = cleaned_data.get('first_name')
-        last_name = cleaned_data.get('last_name')
-        phone = cleaned_data.get('phone')
-        email = cleaned_data.get('email')
-        description = cleaned_data.get('description')
-        category = cleaned_data.get('category')
-        picture = cleaned_data.get('picture')
 
         return super().clean()
 
@@ -129,3 +116,81 @@ class ContactForm(forms.ModelForm):
         else:
             ...
         return phone
+
+class RegisterForm(UserCreationForm):
+    first_name = forms.CharField(
+        widget=forms.TextInput(
+            attrs={
+                'placeholder': 'Digite seu nome',
+            }
+        ),
+        label= 'Nome',
+        required=True,
+        min_length=3,
+    )
+    last_name = forms.CharField(
+        widget=forms.TextInput(
+            attrs={
+                'placeholder': 'Digite seu sobrenome',
+            }
+        ),
+        label= 'Sobrenome',
+        required=True,
+    )
+    email = forms.EmailField(
+        widget=forms.TextInput(
+            attrs={
+                'placeholder': 'Digite seu email',
+            }
+        ),
+        label= 'E-mail',
+        required=True,
+    )
+    username = forms.CharField(
+        widget=forms.TextInput(
+            attrs={
+                'placeholder': 'Digite seu usuário',
+            }
+        ),
+        label = 'Usuário',
+        required=True,
+    )
+    password1 = forms.CharField(
+        widget=forms.PasswordInput(
+            attrs={
+                'placeholder': 'Digite sua senha',
+            }
+        ),
+        label = 'Senha',
+        required=True,
+        help_text= 'Acima de 8 dígitos'
+    )
+    password2 = forms.CharField(
+        widget=forms.PasswordInput(
+            attrs={
+                'placeholder': 'Digite sua senha novamente',
+            }
+        ),
+        label = 'Confirme a senha' ,
+        required=True,
+    )
+
+
+    class Meta:
+        model = User
+        fields = (
+            'first_name', 'last_name', 'email',
+            'username', 'password1', 'password2',
+        )
+
+    def clean_email(self):
+        email = self.cleaned_data.get('email')
+
+        if User.objects.filter(email=email).exists():
+            self.add_error(
+                'email',
+                ValidationError('Já existe este e-mail', code='invalid')
+            )
+
+        return email
+    
