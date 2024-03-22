@@ -15,26 +15,44 @@
 
     <div class="contact-links">
       <a class="btn btn-link" href="{% url 'contact:update' contact.id %}"> 
-        Update
+        Atualizar
       </a>
 
-      <form id='delete-form' action="{% url 'contact:delete' contact.id %}" method="POST">
-        {% csrf_token %}
-        <button class="btn btn-link btn-delete" type="submit">
-          Delete
-        </button>
-      </form>
+      <button class="btn btn-link btn-delete">Excluir</button>
     </div>
 
   </div>
 
+  <div id="popup-overlay" class="popup-overlay"></div>
+  <div id="popup" class="popup">
+    <div class="popup-content">
+      <span class="close">&times;</span>
+      <p>Tem certeza que deseja excluir este contato?</p>
+      <form id='delete-form' action="{% url 'contact:delete' contact.id %}" method="POST">
+        {% csrf_token %}
+        <button class="btn btn-danger" type="submit">Confirmar</button>
+        <button class="btn btn-secondary" onclick="closePopup()">Cancelar</button>
+      </form>
+    </div>
+  </div>
+
   <script>
-    document.getElementById('delete-form').addEventListener('submit', function(event) {
-      var confirmDelete = confirm("Tem certeza que deseja excluir este contato?");
-      if (!confirmDelete) {
-        event.preventDefault();
+    function openPopup() {
+      document.getElementById("popup-overlay").style.display = "block";
+      document.getElementById("popup").style.display = "block";
+    }
+
+    function closePopup() {
+      document.getElementById("popup-overlay").style.display = "none";
+      document.getElementById("popup").style.display = "none";
+    }
+
+    document.querySelector(".btn-delete").addEventListener("click", openPopup);
+    document.querySelector(".close").addEventListener("click", closePopup);
+    window.addEventListener("click", function(event) {
+      if (event.target == document.getElementById("popup-overlay")) {
+        closePopup();
       }
     });
   </script>
-  
 {% endblock content %}
