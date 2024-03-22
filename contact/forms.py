@@ -68,7 +68,13 @@ class ContactForm(forms.ModelForm):
         help_text='Texto para ajudar seu usuário',
         required=False
     )
-
+    picture = forms.ImageField(
+        widget=forms.FileInput(
+            attrs={
+                'accept' : 'pictures/*'
+            }
+        )
+    )
 
     def __init__(self, *args, **kwargs):
         super().__init__(*args, **kwargs)
@@ -77,7 +83,8 @@ class ContactForm(forms.ModelForm):
     class Meta:
         model = Contact
         fields = (
-            'first_name', 'last_name', 'phone', 'email', 'description', 'category',
+            'first_name', 'last_name', 'phone', 'email', 'description', 'category', 
+            'picture',
         )
     
     def clean(self):
@@ -88,6 +95,7 @@ class ContactForm(forms.ModelForm):
         email = cleaned_data.get('email')
         description = cleaned_data.get('description')
         category = cleaned_data.get('category')
+        picture = cleaned_data.get('picture')
 
         return super().clean()
 
