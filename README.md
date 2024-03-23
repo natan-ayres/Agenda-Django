@@ -3,21 +3,24 @@
 
 # Situação Atual:
 
-Utilizando SQLite, sem login e sem auth.
+Projeto Funcionando porém sem autorização ou Login de maneira efetiva, Banco de Dados ainda o padrão de Django
 
 # Como acessar as rotas?
 
-No topo do página, tem o Criar Usuário, ao clicar vai ser redirecionado para a página de criação, após criar seu úsuario(pode-se criar vários) será redirecionado para a página de atualização aonde poderá atualizar o úsuario recem criado, ao clicar em AGENDA, será redirecionado para a página principal, aonde com o contato já criado, poderá ao clicar no seu ID, entrar em uma página com as informações do usuário e opção de ATUALIZAR e DELETAR.
+No topo do página, tem o Criar Contato, ao clicar vai ser redirecionado para a página de criação, após criar seu contato(pode-se criar vários) será redirecionado para a página de atualização aonde poderá atualizar o contato recem criado, ao clicar em AGENDA, será redirecionado para a página principal, aonde com o contato já criado, poderá ao clicar no seu ID, entrar em uma página com as informações do contato e opção de ATUALIZAR e DELETAR.
+
+Também no topo terá a opção de Criar Usuário.
 
 # Rotas Manuais:
 
-/contact/{id} (Rota de informações de um usuário específico)
-/contact/create (Rota para criar usuários)
-/contact/{id}/update (Rota de atualização de usuário)
+/contact/{id}/ (Rota de informações de um CONTATO específico)
+/contact/create/ (Rota para criar CONTATOS)
+/contact/{id}/update/ (Rota de atualização de CONTATO)
+/user/create/ (Rota de criar USUÁRIOS)
 
 # Observações:
 
-Usuários com o campo show desmarcado/false, NÃO vão aparecer na pagina inicial, de usuário ou na update.
+Contatos com o campo show desmarcado/false, NÃO vão aparecer na pagina inicial, de contato ou na update, somente no banco de dados.
 
 # Passo a Passo para testes:
 
