@@ -12,14 +12,15 @@
                 </a>
             </li>
             <li class="menu-item">
-                <a href="{% url 'contact:register' %}" class="menu-link">
-                    Criar Usuário
-                </a>
-            </li>
-            <li class="menu-item">
-                <a href="{% url 'contact:index' %}" class="menu-link">
-                    Logout
-                </a>
+                {% if user.is_authenticated %}
+                    <a href="{% url 'contact:logout' %}" class="menu-link">
+                        Logout
+                    </a>
+                {% else %}
+                    <a href="{% url 'contact:login' %}" class="menu-link">
+                        Login
+                    </a>
+                {% endif %}
             </li>
         </ul>
     </nav>
