@@ -1,5 +1,5 @@
 from typing import Any, Dict
-
+from django.contrib import messages
 from django import forms
 from django.core.exceptions import ValidationError
 from django.core.paginator import Paginator
@@ -22,6 +22,7 @@ def create(request):
 
         if form.is_valid():
             contact = form.save()
+            messages.success(request, 'Contato Criado')
             return redirect('contact:contact', contact_id=contact.pk)
 
         return render(
@@ -55,6 +56,7 @@ def update(request, contact_id):
 
         if form.is_valid():
             contact = form.save()
+            messages.success(request, 'Contato Atualizado')
             return redirect('contact:contact', contact_id=contact.pk)
 
         return render(
@@ -77,4 +79,5 @@ def update(request, contact_id):
 def delete(request, contact_id):
     contact = get_object_or_404(Contact, pk=contact_id, show=True)
     contact.delete()
+    messages.success(request, 'Contato Deletado')
     return redirect('contact:index')
