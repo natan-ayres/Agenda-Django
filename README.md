@@ -3,13 +3,13 @@
 
 # Situação Atual:
 
-Projeto Funcionando porém sem autorização ou Login de maneira efetiva, Banco de Dados ainda o padrão de Django
+Projeto Funcionando com Login e Autenticação, porém ainda falta adcionar algumas coisas, Banco de Dados ainda o padrão de Django
 
 # Como acessar as rotas?
 
-No topo do página, tem o Criar Contato, ao clicar vai ser redirecionado para a página de criação, após criar seu contato(pode-se criar vários) será redirecionado para a página de atualização aonde poderá atualizar o contato recem criado, ao clicar em AGENDA, será redirecionado para a página principal, aonde com o contato já criado, poderá ao clicar no seu ID, entrar em uma página com as informações do contato e opção de ATUALIZAR e DELETAR.
+No topo do página, tem o Criar Contato, ao clicar vai ser redirecionado para a página de criação, após criar seu contato(pode-se criar vários) será redirecionado a página principal, aonde lá aparece o seu contato criado, ao clicar no seu ID, entrará em uma página com as informações do contato e opção de ATUALIZAR e DELETAR, aonde o ATUALIZAR levará a uma página para atualização.
 
-Também no topo terá a opção de Criar Usuário.
+Também no topo terá a opção de LOGIN, aonde redirecionará para uma página que caso você ainda não tenha uma conta, você poderá clicar em Cadastrar Usuário, nisso após cadastrado ele vai fazer o LOGIN automaticamente, e ao olhar para o cabeçalho da página, verá que LOGIN se tornou LOGOUT, aonde ao clicar você vai sair da sessão.
 
 # Rotas Manuais:
 
@@ -17,6 +17,8 @@ Também no topo terá a opção de Criar Usuário.
 /contact/create/ (Rota para criar CONTATOS)
 /contact/{id}/update/ (Rota de atualização de CONTATO)
 /user/create/ (Rota de criar USUÁRIOS)
+/user/login/ (Rota para fazer o LOGIN)
+/user/logout/ (Rota para SAIR da sessão)
 
 # Observações:
 
