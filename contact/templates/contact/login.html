@@ -10,6 +10,7 @@
         </p>
     {% else %}
         {% include 'contact/partials/user_form.html'%}
+        <p><a href="{% url 'contact:register'%}">Cadastrar Usuário</a>
     {% endif %}
     
   </div>

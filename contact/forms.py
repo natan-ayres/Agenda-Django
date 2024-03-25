@@ -6,6 +6,7 @@ from contact.models import Contact, Category, User
 from django import forms
 from django.core.exceptions import ValidationError
 from django.contrib.auth.forms import UserCreationForm
+from django.contrib.auth import password_validation
 
 def letra_espaco(s):
     return all(caracter.isalpha() or caracter.isspace() for caracter in s)
@@ -193,4 +194,57 @@ class RegisterForm(UserCreationForm):
             )
 
         return email
+
+
+class RegisterUpdateForm(forms.ModelForm):
+    class Meta:
+        model = User
+        fields = (
+            'first_name', 'last_name', 'email', 'username', 'password1', 'password2',
+        )
     
+    first_name = forms.CharField(
+        min_length=2,
+        max_length=30,
+        required=True,
+        error_messages={
+            'min_length': 'Porfavor, acima de 2 digitos.',
+            'max_length': 'Porfavor, abaixo de 30 digitos.'
+        },
+    )
+    last_name = forms.CharField(
+        min_length=2,
+        max_length=30,
+        required=True,
+        error_messages={
+            'min_length': 'Porfavor, acima de 2 digitos.',
+            'max_length': 'Porfavor, abaixo de 30 digitos.'
+        },
+    )
+    password1 = forms.CharField(
+        label='Senha',
+        strip=False,
+        widget=forms.PasswordInput(attrs={"autocomplete": "new-password"}),
+        required=False
+    )
+    password2 = forms.CharField(
+        label='Confirme a senha',
+        strip=False,
+        widget=forms.PasswordInput(attrs={"autocomplete": "new-password"}),
+        required=False
+    )
+
+
+
+    def clean_email(self):
+        email = self.cleaned_data.get('email')
+        if email != self.instance.email:
+            if User.objects.filter(email=email).exists():
+                self.add_error(
+                    'email',
+                    ValidationError('Já existe este e-mail', code='invalid')
+                )
+            else:
+                return email
+        return email
+        
