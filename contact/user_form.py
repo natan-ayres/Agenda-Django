@@ -57,6 +57,9 @@ def updateview(request):
          
         if form.is_valid():
             form.save()
+            form = AuthenticationForm(request, data=request.POST)
+            user = form.get_user()
+            auth.login(request, user)
             messages.success(request, 'Atualizado com sucesso! ')
             return redirect('contact:userupdate')
 
