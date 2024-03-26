@@ -3,7 +3,37 @@
 
 # Situação Atual:
 
-Projeto Finalizado | Utiliza o DB do Django
+Projeto Finalizado | Utiliza o POSTGRESQL
+
+# Passo a Passo:
+
+# 1- Ter o Python instalado em sua máquina
+
+# 2- Criar o Ambiente Virtual:
+Windows: python -m venv venv
+Linux e Mac'os: python3 -m venv venv
+
+# 3- Ativar o Ambiente Virtual:
+Windows: .\venv\scripts\activate.ps1
+Linux e Mac'os: source venv\bin\activate
+
+# 4- Instalar os requirements.txt:
+pip install -r requirements.txt
+
+# 5 - Criar seu Banco de Dados no POSTGRESQL e criar a Conexão)
+baixe o Postgres, salve seu usuário e senha, crie um servidor, crie um banco de dados com nome 'agendadb'
+após isso vá nos settings.py e troque os dados pelos seus dados. (normalmente só é necessário trocar a senha e user)
+<img width="272" alt="20240326193435" src="https://github.com/natan-ayres/Agenda-Django/assets/129100066/873b1df8-54ca-47c2-a2c4-71f36ddb88c8">
+
+
+# 6- Fazer as migrações:
+python manage.py makemigrations
+
+# 7- Migrar as migrações:
+python manage.py migrate
+
+# 8- Rodar o programa:
+python manage.py runserver
 
 # Como acessar as rotas?
 
@@ -47,27 +77,7 @@ Contatos com o campo show desmarcado/false, NÃO vão aparecer na pagina inicial
 Caso entrar em páginas restritas a usuários logados/contatos existentes, você vai ser redirecionado para outra página, Contatos só podem ser criado por Usuário.
 Contatos só podem ser editados ou apagados pelo usuário que fez eles.
 
-# Passo a Passo para testes:
 
-# 1- Ter o Python instalado em sua máquina
 
-# 2- Criar o Ambiente Virtual:
-Windows: python -m venv venv
-Linux e Mac'os: python3 -m venv venv
 
-# 3- Ativar o Ambiente Virtual:
-Windows: .\venv\scripts\activate.ps1
-Linux e Mac'os: source venv\bin\activate
-
-# 4- Instalar os requirements.txt:
-pip install -r requirements.txt
-
-# 5- Fazer as migrações:
-python manage.py makemigrations
-
-# 6- Migrar as migrações:
-python manage.py migrate
-
-# 7- Rodar o programa:
-python manage.py runserver
 
