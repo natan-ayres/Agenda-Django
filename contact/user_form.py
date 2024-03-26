@@ -12,8 +12,8 @@ def register(request):
 
         if form.is_valid():
             form.save()
-            messages.success(request, 'Usuário Cadastrado')
-            return redirect('contact:index')
+            messages.success(request, 'Conta criada!')
+            return redirect('contact:login')
 
 
     return render(
@@ -34,7 +34,7 @@ def loginview(request):
             user = form.get_user()
             auth.login(request, user)
             messages.success(request,'Logado com sucesso! ')
-            return redirect('contact:index')
+            return redirect('contact:usercontact')
         messages.error(request, 'Login invalido')
     
     return render(
@@ -61,7 +61,7 @@ def updateview(request):
             user = form.get_user()
             auth.login(request, user)
             messages.success(request, 'Atualizado com sucesso! ')
-            return redirect('contact:userupdate')
+            return redirect('contact:usercontact')
 
     return render(
         request,

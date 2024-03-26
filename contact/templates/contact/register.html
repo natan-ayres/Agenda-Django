@@ -2,9 +2,11 @@
 
 {% block content %}
   <div class="form-wrapper">
-
-    <h2>Cadastro</h2>
-
+    {% if user.is_authenticated %}
+      <h2>Atualização</h2>
+    {% else %}
+      <h2>Cadastro</h2>
+    {% endif %}
     {% include 'contact/partials/user_form.html'%}
   </div>
 {% endblock content %}

@@ -5,9 +5,12 @@
 
     <h2>Login</h2>
     {% if user.is_authenticated %}
-        <p>
-            {{ user.username }} já está logado.
-        </p>
+    {% url 'contact:usercontact' as redirect_to %}
+      {% if redirect_to %}
+          <script type="text/javascript">
+              window.location.href = "{{ redirect_to }}";
+          </script>
+      {% endif %}
     {% else %}
         {% include 'contact/partials/user_form.html'%}
         <p><a href="{% url 'contact:register'%}">Cadastrar Usuário</a>

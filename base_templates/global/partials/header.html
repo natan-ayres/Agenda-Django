@@ -11,17 +11,29 @@
                     Criar Contato
                 </a>
             </li>
-            <li class="menu-item">
-                {% if user.is_authenticated %}
+            {% if user.is_authenticated %}
+                <li class="menu-item">
+                    <a href="{% url 'contact:usercontact' %}" class="menu-link">
+                    {{ user.username }}
+                    </a>
+                </li>
+                <li class="menu-item">
                     <a href="{% url 'contact:logout' %}" class="menu-link">
                         Logout
                     </a>
-                {% else %}
+                </li>
+            {% else %}
+                <li class="menu-item">
+                    <a class="menu-link">
+                        Visitante
+                    </a>
+                </li>
+                <li class="menu-item">
                     <a href="{% url 'contact:login' %}" class="menu-link">
                         Login
                     </a>
-                {% endif %}
-            </li>
+                </li>
+            {% endif %}
         </ul>
     </nav>
     <div class="search">
