@@ -52,5 +52,3 @@ python manage.py migrate
 # 7- Rodar o programa:
 python manage.py runserver
 
-
-
