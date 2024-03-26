@@ -90,8 +90,6 @@ ENV/
 env.bak/
 venv.bak/
 
-/site
-
 .mypy_cache/
 
 *.tmlanguage.cache

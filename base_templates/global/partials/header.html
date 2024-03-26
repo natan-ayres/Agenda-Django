@@ -17,6 +17,11 @@
                     Perfil | {{ user.username }}
                     </a>
                 </li>
+                <li class="menu-item">
+                    <a href="{% url 'contact:logout' %}" class="menu-link">
+                    Logout
+                    </a>
+                </li>
             {% else %}
                 <li class="menu-item">
                     <a class="menu-link">

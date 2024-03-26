@@ -40,7 +40,9 @@ def search(request):
             Q(last_name__icontains=search_value) |
             Q(phone__icontains=search_value) |
             Q(email__icontains=search_value) |
-            Q(owner__username__icontains=search_value)
+            Q(owner__username__icontains=search_value) |
+            Q(category__name__icontains=search_value)
+
         )\
         .order_by('-id')
 
