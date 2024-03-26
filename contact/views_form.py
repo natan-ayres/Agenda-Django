@@ -51,41 +51,48 @@ def update(request, contact_id):
     except Contact.DoesNotExist:
         messages.error(request, 'Contato não existente')
         return redirect('contact:index')
-    
-    form_action = reverse('contact:update', args=(contact_id,))
+    if contact.owner == request.user:
+        form_action = reverse('contact:update', args=(contact_id,))
 
-    if request.method == 'POST':
-        form = ContactForm(request.POST, request.FILES, instance=contact)
+        if request.method == 'POST':
+            form = ContactForm(request.POST, request.FILES, instance=contact)
+
+            context = {
+                'form': form,
+                'form_action': form_action,
+            }
+
+            if form.is_valid():
+                contact = form.save()
+                messages.success(request, 'Contato Atualizado')
+                return redirect('contact:contact', contact_id=contact.pk)
+
+            return render(
+                request,
+                'contact/create.html',
+                context
+            )
 
         context = {
-            'form': form,
+            'form': ContactForm(instance=contact),
             'form_action': form_action,
         }
-
-        if form.is_valid():
-            contact = form.save()
-            messages.success(request, 'Contato Atualizado')
-            return redirect('contact:contact', contact_id=contact.pk)
 
         return render(
             request,
             'contact/create.html',
             context
         )
-
-    context = {
-        'form': ContactForm(instance=contact),
-        'form_action': form_action,
-    }
-
-    return render(
-        request,
-        'contact/create.html',
-        context
-    )
+    else:
+        messages.error(request, 'Você não é o Owner desse contato')
+        return redirect('contact:contact', contact_id=contact.pk)
 
 def delete(request, contact_id):
-    contact = get_object_or_404(Contact, pk=contact_id, show=True)
-    contact.delete()
-    messages.success(request, 'Contato Deletado')
-    return redirect('contact:index')
+    contact = Contact.objects.get(pk=contact_id, show=True)
+    if contact.owner == request.user:
+        contact.delete()
+        messages.success(request, 'Contato Deletado')
+        return redirect('contact:index')
+    else:
+        messages.error(request, 'Você não é o Owner desse contato')
+        return redirect('contact:contact', contact_id=contact.pk)

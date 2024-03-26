@@ -10,8 +10,6 @@
       <p><b>Nome:</b> {{ user.first_name }}</p>
       <p><b>Sobrenome:</b> {{ user.last_name }}</p>
       <p><b>Email:</b> {{ user.email }}</p>
-      <p><b>Telefone:</b> {{ user.phone }}</p>
-      <p><b>Categoria:</b> {{ user.category }}</p>
       <div class="contact-links">
           <a class="btn btn-link" href="{% url 'contact:userupdate' %}"> 
             Atualizar
@@ -27,7 +25,7 @@
       <div id="popup" class="popup">
           <div class="popup-content">
               <span class="close">&times;</span>
-              <p>Tem certeza que deseja excluir este contato?</p>
+              <p>Tem certeza que deseja excluir este Usuário?</p>
               <form id='delete-form' action="{% url 'contact:userdelete' %}" method="POST">
                   {% csrf_token %}
                   <button class="btn btn-danger" type="submit">Confirmar</button>
