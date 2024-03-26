@@ -1,6 +1,7 @@
 from typing import Any, Dict
 from django.contrib import messages
 from django import forms
+from django.contrib.auth.decorators import login_required
 from django.core.exceptions import ValidationError
 from django.core.paginator import Paginator
 from django.db.models import Q
@@ -21,7 +22,9 @@ def create(request):
         }
 
         if form.is_valid():
-            contact = form.save()
+            contact = form.save(commit=False)
+            contact.owner = request.user
+            contact.save()
             messages.success(request, 'Contato Criado')
             return redirect('contact:contact', contact_id=contact.pk)
 

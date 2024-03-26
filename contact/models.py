@@ -1,3 +1,5 @@
+from django.db.models.signals import pre_save
+from django.dispatch import receiver
 from django.db import models
 from django.utils import timezone
 from django.contrib.auth.models import User
@@ -27,9 +29,14 @@ class Contact(models.Model):
         blank=True, null=True,
         )
     owner = models.ForeignKey(
-        User, on_delete=models.SET_NULL,
+        User, on_delete=models.CASCADE,
         blank=True, null=True,
         )
 
     def __str__(self):
         return f'{self.first_name} {self.last_name}'
+    
+@receiver(pre_save, sender=Contact)
+def set_contact_owner(sender, instance, **kwargs):
+        if not instance.owner_id:
+            instance.owner = instance._request_user
