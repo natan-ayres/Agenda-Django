@@ -23,6 +23,7 @@ pip install -r requirements.txt
 # 5 - Criar seu Banco de Dados no POSTGRESQL e criar a Conexão)
 baixe o Postgres, salve seu usuário e senha, crie um servidor, crie um banco de dados com nome 'agendadb'
 após isso vá nos settings.py e troque os dados pelos seus dados. (normalmente só é necessário trocar a senha e user)
+
 <img width="272" alt="20240326193435" src="https://github.com/natan-ayres/Agenda-Django/assets/129100066/873b1df8-54ca-47c2-a2c4-71f36ddb88c8">
 
 
