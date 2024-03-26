@@ -3,13 +3,11 @@
 
 # Situação Atual:
 
-Projeto Funcionando com Login e Autenticação, porém ainda falta adcionar algumas coisas, Banco de Dados ainda o padrão de Django
+Projeto Finalizado | Utiliza o DB do Django
 
 # Como acessar as rotas?
 
-No topo do página, tem o Criar Contato, ao clicar vai ser redirecionado para a página de criação, após criar seu contato(pode-se criar vários) será redirecionado a página principal, aonde lá aparece o seu contato criado, ao clicar no seu ID, entrará em uma página com as informações do contato e opção de ATUALIZAR e DELETAR, aonde o ATUALIZAR levará a uma página para atualização.
-
-No topo terá a opção de LOGIN, aonde redirecionará para uma página que caso você ainda não tenha uma conta, você poderá clicar em Cadastrar Usuário, nisso após cadastrado você terá que fazer o Login, após isso, ao olhar para o cabeçalho da página, verá que visitante se tornou o seu nome de usuário, aonde ao clicar você vai entrar em uma página com suas informações, opção de ATUALIZAR os dados e de DELETAR a conta, ao olhar para o cabeçario novamente também verá que LOGIN se tornou LOGOUT, aonde ao clicar você vai sair da sessão.
+Ao abrir a página inicial, no cabecalho vai ter o LOGIN, aonde ao clicar você vai poder fazer a sua conta de Usuário, após criar, vai ter a opção de entrar no seu perfil e ATUALIZAR ou DELETAR sua conta se necessário, também se olhar no cabecalho terá a opção de criar contato, aonde poderá fazer contatos, após isso aparecerá na sua página principal o novo contato cadastrado, se clicar no ID dele, vai entrar na página de informações do contato, aonde poderá ATUALIZAR e DELETAR o contato se necessário, também pode ver que no cabeçalho invês do LOGIN agora terá LOGOUT e se clicar na AGENDA volta para a página inicial.
 
 # Rotas Manuais:
 
@@ -21,11 +19,14 @@ No topo terá a opção de LOGIN, aonde redirecionará para uma página que caso
 /user/login/ (Rota para fazer o LOGIN)
 /user/contact/ (Rota de informações de USUÁRIO)
 /user/logout/ (Rota para SAIR da sessão)
+/user/userupdate/ (Rota de atualização de USUÁRIO)
+/user/userdelete/ (Rota de delete de USUÁRIO)
 
 # Observações:
 
 Contatos com o campo show desmarcado/false, NÃO vão aparecer na pagina inicial, de contato ou na update, somente no banco de dados.
-Caso entrar em páginas restritas a usuários logados/contatos existentes, você vai ser redirecionado para outra página.
+Caso entrar em páginas restritas a usuários logados/contatos existentes, você vai ser redirecionado para outra página, Contatos só podem ser criado por Usuário.
+Contatos só podem ser editados ou apagados pelo usuário que fez eles.
 
 # Passo a Passo para testes:
 
