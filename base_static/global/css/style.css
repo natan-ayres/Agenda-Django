@@ -384,3 +384,6 @@ text-decoration: none;
 cursor: pointer;
 }
 
+.btn-del {
+  background: tomato;
+}

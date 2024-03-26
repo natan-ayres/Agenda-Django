@@ -3,7 +3,7 @@ from django.urls import path
 
 from contact.views import contact, search, index, contactuser
 from contact.views_form import create, update, delete
-from contact.user_form import register, loginview, logoutview, updateview
+from contact.user_form import register, loginview, logoutview, updateview, deleteview
 
 app_name = 'contact'
 
@@ -21,4 +21,5 @@ urlpatterns = [
     path('user/logout/', logoutview, name='logout'),
     path('user/update/', updateview, name='userupdate'),
     path('user/contact/', contactuser, name='usercontact'),
+    path('user/delete/', deleteview, name='userdelete')
 ]

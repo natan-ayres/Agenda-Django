@@ -3,7 +3,7 @@
 {% block content %}
   <div class="form-wrapper">
 
-    <h2>Login</h2>
+    
     {% if user.is_authenticated %}
     {% url 'contact:usercontact' as redirect_to %}
       {% if redirect_to %}
@@ -12,8 +12,9 @@
           </script>
       {% endif %}
     {% else %}
-        {% include 'contact/partials/user_form.html'%}
-        <p><a href="{% url 'contact:register'%}">Cadastrar Usuário</a>
+      <h2>Login</h2>
+      {% include 'contact/partials/user_form.html'%}
+      <p><a href="{% url 'contact:register'%}">Cadastrar Usuário</a>
     {% endif %}
     
   </div>

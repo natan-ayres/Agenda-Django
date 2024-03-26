@@ -1,4 +1,5 @@
 from django.core.paginator import Paginator
+from django.contrib import messages
 from django.db.models import Q
 from django.shortcuts import get_object_or_404, redirect, render
 from django.contrib.auth.forms import AuthenticationForm
@@ -60,9 +61,12 @@ def search(request):
 
 
 def contact(request, contact_id):
-    single_contact = get_object_or_404(
-        Contact, pk=contact_id, show=True
-    )
+    try:
+        single_contact = Contact.objects.get(pk=contact_id, show=True)
+    except Contact.DoesNotExist:
+        messages.error(request, 'Contato não existente')
+        return redirect('contact:index')
+        
     site_title = f'{single_contact.first_name}  {single_contact.last_name} -'
 
     context = {

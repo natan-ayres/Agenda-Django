@@ -70,3 +70,9 @@ def updateview(request):
             'form': form
         }
     )
+
+def deleteview(request):
+    user = request.user
+    user.delete()
+    messages.success(request, 'Usuário Deletado')
+    return redirect('contact:login')
