@@ -7,7 +7,26 @@ Projeto Finalizado | Utiliza o DB do Django
 
 # Como acessar as rotas?
 
-Ao abrir a página inicial, no cabecalho vai ter o LOGIN, aonde ao clicar você vai poder fazer a sua conta de Usuário, após criar, vai ter a opção de entrar no seu perfil e ATUALIZAR ou DELETAR sua conta se necessário, também se olhar no cabecalho terá a opção de criar contato, aonde poderá fazer contatos, após isso aparecerá na sua página principal o novo contato cadastrado, se clicar no ID dele, vai entrar na página de informações do contato, aonde poderá ATUALIZAR e DELETAR o contato se necessário, também pode ver que no cabeçalho invês do LOGIN agora terá LOGOUT e se clicar na AGENDA volta para a página inicial.
+Ao abrir a página inicial, no cabecalho vai ter o LOGIN. 
+<img width="1403" alt="20240326175045" src="https://github.com/natan-ayres/Agenda-Django/assets/129100066/22feb5b2-9797-4a21-b4e1-baed6560fbe9">
+
+Ao clicar você vai poder fazer a sua conta de Usuário.
+<img width="1409" alt="20240326175107" src="https://github.com/natan-ayres/Agenda-Django/assets/129100066/88f9b933-a9aa-4059-9079-d757b6215be5">
+
+Coloque os dados e se atente aos requisitos de cada campo.
+<img width="1395" alt="20240326175138" src="https://github.com/natan-ayres/Agenda-Django/assets/129100066/f474a4a8-9aca-4fd9-8665-540382ccb99c">
+
+Ao voltar a página de Login e fazer o Login, você vai se deparar com seu Perfil, e agora aparecerá Criar Contato.
+<img width="1399" alt="20240326175335" src="https://github.com/natan-ayres/Agenda-Django/assets/129100066/c6f395a3-c8c9-4773-aae9-d76f75347b2c">
+
+Coloque os dados e se atente aos requisitos de cada campo.
+<img width="1405" alt="20240326175356" src="https://github.com/natan-ayres/Agenda-Django/assets/129100066/8e2f2786-b5c2-4555-a8c5-2126164171cd">
+
+Com o Contato criado, ele aparecerá na página inicial, aonde você pode clicar em seu ID.
+<img width="1401" alt="20240326175454" src="https://github.com/natan-ayres/Agenda-Django/assets/129100066/25b3d381-3240-4193-8054-e49b0e111184">
+
+Ao clicar no ID, será Redirecionado para a página do Contato.
+<img width="1406" alt="20240326175434" src="https://github.com/natan-ayres/Agenda-Django/assets/129100066/1a53c009-3c24-41f3-8c1f-12022dfb0580">
 
 # Rotas Manuais:
 
